@@ -12,12 +12,11 @@
 from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseNotFound
 
 from challenges.models import Book
+from django.shortcuts import get_object_or_404
 
 
 def get_book(book_id: int) -> Book | None:
-    # код писать тут
-    pass
-
+    return Book.objects.filter(id=book_id).first()
 
 def book_details_handler(request: HttpRequest, book_id: int) -> HttpResponse:
     book = get_book(book_id)
